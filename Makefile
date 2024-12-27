@@ -17,10 +17,10 @@ main.o: main.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 gpio:
-	$(MAKE) -C gpio CC=$(CC) CFLAGS="$(CFLAGS)"
+	$(MAKE) -C gpio CC=all"
 
 lcd:
-	$(MAKE) -C lcd CC=$(CC) CFLAGS="$(CFLAGS)"
+	$(MAKE) -C lcd CC=all"
 
 flash:
 	avr-objcopy -O ihex -R .eeprom $(TARGET) main.hex
