@@ -7,7 +7,7 @@ int main(void){
     LCD_1602_write_text(&lcd, "Hello, World!");
     while(1){
         _delay_ms(1000);
-        LCD_1602_send_command(0x01, &lcd);
+        LCD_1602_clear(&lcd);
         _delay_ms(1000);
         LCD_1602_write_text(&lcd, "Hello, World!");
 

@@ -15,3 +15,5 @@ void LCD_1602_init(LCD_1602* lcd);
 void LCD_1602_send_nibble( LCD_1602* lcd, unsigned char data);
 void LCD_1602_send_command( LCD_1602* lcd, unsigned char cmd);
 void LCD_1602_write_text(LCD_1602* lcd, char* text);
+
+void LCD_1602_clear(LCD_1602* lcd);

@@ -37,6 +37,10 @@ void LCD_1602_init(LCD_1602* lcd){
 
 }
 
+void LCD_1602_clear(LCD_1602* lcd){
+	LCD_1602_send_command(lcd, 0x01);
+}
+
 void LCD_1602_write_text(LCD_1602* lcd, char* text){
 	set_pin(lcd->RS, 1);
 	while(*text){
@@ -53,7 +57,6 @@ void LCD_1602_send_command(LCD_1602* lcd, unsigned char cmd){
 }
 
 void LCD_1602_send_nibble(LCD_1602* lcd, unsigned char data){
-
 	set_pin(lcd->D4, (data >> 0) & 0x01);
     set_pin(lcd->D5, (data >> 1) & 0x01);
     set_pin(lcd->D6, (data >> 2) & 0x01);
