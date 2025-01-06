@@ -11,7 +11,7 @@ int main(void){
     TWI_init();
 
     while(1){
-        SHT31_send_command(0x2400);
+        SHT31_send_command(SHT31_READ);
         _delay_ms(20); 
         SHT31_read_data(&raw_temp, &raw_hum);
 
@@ -23,7 +23,7 @@ int main(void){
                 "%d.%dC  %d.%d%%", 
                 (int)(temperature), (int)(temperature*100 - (int)temperature * 100), 
                 (int)humidity, (int)(humidity*100 - (int)humidity * 100));
-        _delay_ms(1000);
+        _delay_ms(100);
         LCD_1602_write_text(&lcd, lcd_val);
         _delay_ms(1000);
         LCD_1602_clear(&lcd);

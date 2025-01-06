@@ -2,7 +2,6 @@
 
 #define I2C_H
 
-
 #include <avr/io.h>
 #include "../gpio/gpio.h"
 #include "../lcd/LCD_1602.h"
