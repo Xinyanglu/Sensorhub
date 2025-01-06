@@ -14,21 +14,31 @@ void set_pin_mode(int arduinoPin, unsigned char mode){
 	       else
 		       DDRD = DDRD & ~(1 << (arduinoPin));
 	}
+	else if(arduinoPin <= A5 && arduinoPin >= A0){
+		if (mode)
+			DDRC = DDRC | (1 << (arduinoPin + 6));
+		else
+			DDRC = DDRC & ~(1 << (arduinoPin + 6));
+	}
 }
 
 void set_pin(int arduinoPin, unsigned char value){
-	if(arduinoPin <= 13 && arduinoPin >= 8)
-	{
+	if(arduinoPin <= 13 && arduinoPin >= 8){
 		if(value)
 			PORTB = PORTB | (1 << (arduinoPin - 8));
 		else
 			PORTB = PORTB & ~(1 << (arduinoPin - 8));
 	}
-	else if(arduinoPin <= 7 && arduinoPin >= 2)
-	{
+	else if(arduinoPin <= 7 && arduinoPin >= 2){
 		if(value)
 			PORTD = PORTD | (1 << (arduinoPin));
 		else
 			PORTD = PORTD & ~(1 << (arduinoPin));
+	}
+	else if(arduinoPin <= A5 && arduinoPin >= A0){
+		if (value)
+			PORTC = PORTC | (1 << (arduinoPin + 6));
+		else
+			PORTC = PORTC & ~(1 << (arduinoPin + 6));
 	}
 }
