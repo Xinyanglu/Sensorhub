@@ -9,4 +9,3 @@ void SHT31_send_command(uint16_t command);
 void SHT31_read_data(uint16_t* temperature, uint16_t* humidity);
 float SHT31_calculate_temperature(uint16_t raw_value);
 float SHT31_calculate_humidity(uint16_t raw_value);
-uint8_t SHT31_crc8(const uint8_t *data, int length);
