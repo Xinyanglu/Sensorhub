@@ -7,5 +7,8 @@
 #define A4 -2
 #define A5 -1
 
+#define OUTPUT 1
+#define INPUT 0
+
 void set_pin_mode(int arduinoPin, unsigned char mode);
 void set_pin(int arduinoPin, unsigned char value);
