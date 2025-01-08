@@ -11,7 +11,7 @@ void TWI_init(void){
 uint8_t TWI_start(void) {
     TWCR = (1 << TWSTA) | (1 << TWEN) | (1 << TWINT); // Send START
     while (!(TWCR & (1 << TWINT))); // Wait for completion
-    if((TWSR & 0xF8) != 0x08){
+    if((TWSR & 0xF8) != START){
         return 1;
     }
     return 0;
@@ -31,13 +31,13 @@ uint8_t TWI_transmit_address(uint8_t address, uint8_t read) {
     while (!(TWCR & (1 << TWINT))); // Wait for completion
 
     if(read) {
-        if((TWSR & 0xF8) != 0x40){
+        if((TWSR & 0xF8) != SLA_R_ACKED){
             TWI_stop();
             return 1;
         }
             
     } else {
-        if((TWSR & 0xF8) != 0x18){
+        if((TWSR & 0xF8) != SLA_W_ACKED){
             TWI_stop();
             return 1;
         }
@@ -49,7 +49,7 @@ uint8_t TWI_write(uint8_t data) {
     TWDR = data; // Load data
     TWCR = (1 << TWEN) | (1 << TWINT); // Start transmission
     while (!(TWCR & (1 << TWINT))); // Wait for completion
-    if((TWSR & 0xF8) != 0x28){
+    if((TWSR & 0xF8) != DATA_ACKED){
         TWI_stop();
         return 1;
     }

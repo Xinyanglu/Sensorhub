@@ -10,6 +10,12 @@
 #define WRITE 0
 #define READ 1
 
+// Status codes
+#define START        0x08
+#define SLA_R_ACKED  0x40
+#define SLA_W_ACKED  0x18
+#define DATA_ACKED   0x28
+
 void    TWI_init(void);
 uint8_t TWI_start(void);
 void    TWI_stop(void);
